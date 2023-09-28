@@ -18,19 +18,20 @@ void my_dgemv(int n, double* A, double* x, double* y) {
    {
       int nthreads = omp_get_num_threads();
       int thread_id = omp_get_thread_num();
-      printf("my_dgemv(): Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
-      printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
+      //printf("my_dgemv(): Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
+      //printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
       
-      double sum = 0.0;
       //divide the work among the threads
-      for(int i=0;i<n;i++){
-         for(int j=0;j<n;j+=nthreads){
-            sum += A[i*n+j]*x[j];
+      #pragma omp for
+      for (int i = 0; i < n; i++) {
+         double sum = 0.0;
+        
+         for (int j = 0; j < n; j++) {
+               sum += A[i * n + j] * x[j];
          }
-         #pragma omp critical
-         {
-            y[i] += sum;
-         }
+        
+         #pragma omp atomic
+         y[i] += sum;
       }
    }
 
