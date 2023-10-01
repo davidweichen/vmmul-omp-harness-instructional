@@ -21,11 +21,11 @@ void my_dgemv(int n, double* A, double* x, double* y) {
       //printf("my_dgemv(): Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
       //printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
       
-      //divide the work among the threads
+      //do parallel work here
       #pragma omp for
       for (int i = 0; i < n; i++) {
          double sum = 0.0;
-        
+         
          for (int j = 0; j < n; j++) {
                sum += A[i * n + j] * x[j];
          }
@@ -34,10 +34,6 @@ void my_dgemv(int n, double* A, double* x, double* y) {
          y[i] += sum;
       }
    }
-
-   // insert your dgemv code here. you may need to create additional parallel regions,
-   // and you will want to comment out the above parallel code block that prints out
-   // nthreads and thread_id so as to not taint your timings
 
 }
 
