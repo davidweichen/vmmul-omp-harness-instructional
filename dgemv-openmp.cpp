@@ -26,13 +26,14 @@ void my_dgemv(int n, double* A, double* x, double* y) {
       //do parallel work here
       #pragma omp for schedule(static)
       for (int i = 0; i < n; i++) {
-         double sum = 0.0;
-         #pragma parallel omp for reduction(+:y)
+         double sum=0.0;
          for (int j = 0; j < n; j++) {
-               y[i] += A[i * n + j] * x[j];
+               sum += A[i * n + j] * x[j];
          }
-        
-         
+         #pragma omp critical
+         {
+            y[i] += sum;
+         }
       }
    }
 
