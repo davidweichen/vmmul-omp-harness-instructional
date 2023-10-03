@@ -16,7 +16,7 @@ void my_dgemv(int n, double* A, double* x, double* y) {
 
 
 
-   #pragma omp parallel shared(A,x,y)
+   #pragma omp parallel shared(A,x)
    {
       int nthreads = omp_get_num_threads();
       int thread_id = omp_get_thread_num();
