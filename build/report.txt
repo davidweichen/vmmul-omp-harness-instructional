@@ -1,7 +1,0 @@
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:11:23: missed: couldn't vectorize loop
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:14:25: missed: not vectorized: complicated access pattern.
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:13:27: optimized: loop vectorized using 32 byte vectors
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:13:27: optimized: loop vectorized using 16 byte vectors
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:9:6: note: vectorized 1 loops in function.
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:21:1: note: ***** Analysis failed with vector mode V4DF
-/home/gator/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:21:1: note: ***** Skipping vector mode V32QI, which would repeat the analysis for V4DF
