@@ -14,7 +14,9 @@ const char* dgemv_desc = "OpenMP dgemv.";
 
 void my_dgemv(int n, double* A, double* x, double* y) {
 
-   #pragma omp parallel
+
+
+   #pragma omp parallel shared(A,x,y)
    {
       int nthreads = omp_get_num_threads();
       int thread_id = omp_get_thread_num();
@@ -22,7 +24,7 @@ void my_dgemv(int n, double* A, double* x, double* y) {
       //printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
       
       //do parallel work here
-      #pragma omp for
+      #pragma omp for schedule(static)
       for (int i = 0; i < n; i++) {
          double sum = 0.0;
          
@@ -36,4 +38,5 @@ void my_dgemv(int n, double* A, double* x, double* y) {
    }
 
 }
+
 
