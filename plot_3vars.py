@@ -56,7 +56,7 @@ plt.plot(code3_time, "g-^")
 #plt.xscale("log")
 plt.yscale("log")
 
-plt.xlabel("problem_size(NxN)")
+plt.xlabel("problem_size(n)")
 plt.ylabel("MFLOP/s")
 
 varNames = [var_names[1], var_names[2], var_names[3]]

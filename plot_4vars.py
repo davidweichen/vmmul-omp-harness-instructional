@@ -42,8 +42,8 @@ plt.plot(code4_time,"y-.")
 #plt.xscale("log")
 #plt.yscale("log")
 
-plt.xlabel("problem_size(NxN)")
-plt.ylabel("MFLOP/s")
+plt.xlabel("problem_size(n)")
+plt.ylabel("Speed up")
 
 varNames = [var_names[1], var_names[2], var_names[3], var_names[4]]
 plt.legend(varNames, loc="best")
